@@ -1,5 +1,5 @@
 #Scratra ~ Python-Scratch is no longer a pain
-###Put this in your pipe:
+###Put this in your pipe
 ```python
 #test.py
 from scratra import *
