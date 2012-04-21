@@ -18,4 +18,4 @@ cd your_dir
 python test.py
 ```
 In scratch, make a broadcast called `'hi'` and run.   
-You just saved yourself a _headache_.
+>You just saved yourself a _headache_.
