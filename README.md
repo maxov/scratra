@@ -10,7 +10,6 @@ def hi(scratch):
   
 run()
 ```
-###A little more
 Download scratra.py.
 Start scratch, enable remote sensor connections.
 ###Then smoke it
