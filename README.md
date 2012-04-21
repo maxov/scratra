@@ -14,7 +14,7 @@ Download scratra.py.
 Start scratch, enable remote sensor connections.
 ###Then smoke it
 ```bash
-cd your_dir
+cd test_and_scratra-dir
 python test.py
 ```
 In scratch, make a broadcast called `'hi'` and run.   
