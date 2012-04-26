@@ -1,4 +1,4 @@
-#scratra ~ 0.1
+#scratra ~ 0.2
 #greatdane ~ easy python implementation with scratch
 #inspired by sinatra(sinatrarb.com) ~ code snippets from scratch.py(bit.ly/scratchpy)
 import socket
