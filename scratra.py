@@ -17,6 +17,7 @@ class ScratchInvalidValue(Exception): pass
 broadcast_map = {}
 update_map = {}
 start_list = []
+end_list = []
 scratchSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 runtime_quit = 0
@@ -46,7 +47,8 @@ class ScratchVars:
 class Scratch:
         
         #Variables interface
-        vals = ScratchVars()
+        val = ScratchVars()
+        var = {}
         
         #Broadcast interface
         def broadcast(self, *broadcast):
@@ -128,6 +130,7 @@ class runClass(threading.Thread):
                                                 i = 0
                                                 while i < len(msg)-1:
                                                         if scratchInterface.atom(msg[i]) in update_map:
+                                                                scratchInterface.var[scratchInterface.atom(msg[i])] = scratchInterface.atom(msg[i+1])
                                                                 for func in update_map[scratchInterface.atom(msg[i])]:
                                                                         func(scratchInterface, scratchInterface.atom(msg[i+1]))
                                                         i+=2
@@ -146,6 +149,8 @@ class run_console(threading.Thread):
                         if cmd == 'stop':
                                 runtime_quit = 1
                                 print '-> Quitting'
+                                for func in end_list:
+                                        func(scratchInterface)
                 
 
 #For user convenience, decorator methods
@@ -181,3 +186,10 @@ class update:
 def start(func):
         if func not in start_list:
                 start_list.append(func)
+
+#@end
+#def func(scratch): ...
+
+def end(func):
+        if func not in end_list:
+                end_list.append(func)
