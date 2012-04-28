@@ -48,12 +48,16 @@ class Scratch:
         
         #Variables interface
         val = ScratchVars()
-        var = {}
+        var_dict = {}
         
         #Broadcast interface
         def broadcast(self, *broadcast):
                 for br in broadcast:
                         scratchSocket.send(self.toScratchMessage('broadcast "' + br + '"'))
+                
+        #Variable interface
+        def var(self, var_name):
+                return self.var_dict[var_name]
                 
         @staticmethod   
         def toScratchMessage(cmd):
@@ -130,7 +134,7 @@ class runClass(threading.Thread):
                                                 i = 0
                                                 while i < len(msg)-1:
                                                         if scratchInterface.atom(msg[i]) in update_map:
-                                                                scratchInterface.var[scratchInterface.atom(msg[i])] = scratchInterface.atom(msg[i+1])
+                                                                scratchInterface.var_dict[scratchInterface.atom(msg[i])] = scratchInterface.atom(msg[i+1])
                                                                 for func in update_map[scratchInterface.atom(msg[i])]:
                                                                         func(scratchInterface, scratchInterface.atom(msg[i+1]))
                                                         i+=2
