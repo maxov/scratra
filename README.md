@@ -6,12 +6,14 @@ Scratra is a framework for [Scratch](http://scratch.mit.edu) remote sensor conne
 from scratra import *
 
 @start
-def start(scratch):
+def whenstart(scratch):
   print 'Hello, World!'
   
 @broadcast('hi, scratra!')
 def hi(scratch):
   print 'Hi, Scratch!'
+  
+run()
 ```
 ###And meow
 ```sh
