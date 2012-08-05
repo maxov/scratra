@@ -159,6 +159,7 @@ class run_console(threading.Thread):
 
 #For user convenience, decorator methods
 
+#When Scratch broadcasts this...
 #@broadcast('scratch_broadcast')
 #def func(scratch): ....
 class broadcast:
@@ -171,7 +172,8 @@ class broadcast:
                         broadcast_map[self.b].append(func)
                 else:
                         broadcast_map[self.b] = [func]
-                        
+            
+#When this variable is updated...
 #@update('variable')
 #def func(scratch, value): ...
 class update:
@@ -184,13 +186,15 @@ class update:
                         update_map[self.u].append(func)
                 else:
                         update_map[self.u] = [func]
-                
+
+#When we start listening...
 #@start
 #def func(scratch): ...
 def start(func):
         if func not in start_list:
                 start_list.append(func)
 
+#When we stop listening
 #@end
 #def func(scratch): ...
 def end(func):
